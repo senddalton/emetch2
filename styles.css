@@ -64,7 +64,7 @@ header h1 {
   letter-spacing: 1px;
 }
 
-/* -------------------- CARRUSEL (Galería) -------------------- */
+/* -------------------- CARRUSEL (Galería) -------------------- 
 .gallery-section {
   padding: 5vh 5vw;
   background-color: #1a1a1a;
@@ -113,7 +113,36 @@ header h1 {
 
 .gallery-slide.active {
   opacity: 1;
+}*/
+
+.gallery-section {
+  padding: 2rem 1rem;
+  background: #f4f4f4;
+  text-align: center;
 }
+
+.gallery-slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 1rem;
+  scroll-behavior: smooth;
+  padding-bottom: 1rem;
+}
+
+.gallery-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+}
+
+.gallery-slide img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+}
+
 
 /* -------------------- PRECIOS -------------------- */
 .prices {
@@ -126,7 +155,7 @@ header h1 {
   text-align: center;
   margin-bottom: 3vh;
   font-size: clamp(1.3rem, 2.5vw, 2rem);
-  color: #d4af37;
+  color: #7900ac;
   text-transform: uppercase;
 }
 
