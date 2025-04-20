@@ -1,8 +1,11 @@
-/* Estilos base optimizados */
+/* Estilos base */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
 }
 
 body {
@@ -10,7 +13,12 @@ body {
     line-height: 1.6;
     color: #333;
     background-color: #f5f5f5;
-    overflow-x: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
 }
 
 header {
