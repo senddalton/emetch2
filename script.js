@@ -11,78 +11,132 @@ function setupAutoCarousel(carouselId, delay = 8000) {
         return;
     }
 
+    // Añadir estilos necesarios al contenedor
+    carousel.style.display = 'flex';
+    carousel.style.overflowX = 'auto';
+    carousel.style.scrollSnapType = 'x mandatory';
+    carousel.style.scrollBehavior = 'smooth';
+    carousel.style.webkitOverflowScrolling = 'touch';
+
     const cards = carousel.querySelectorAll('.card');
     if (cards.length === 0) {
         console.error('No se encontraron cards en el carrusel');
         return;
     }
 
+    // Añadir estilos necesarios a las cards
+    cards.forEach(card => {
+        card.style.flex = '0 0 auto';
+        card.style.scrollSnapAlign = 'start';
+    });
+
     let currentIndex = 0;
     let intervalId;
-    const cardWidth = cards[0].offsetWidth + parseInt(window.getComputedStyle(cards[0]).marginRight);
+    let isDragging = false;
+    let startPos = 0;
+    let currentScroll = 0;
+
+    // Calcular el ancho de una card con su margen
+    const cardStyle = window.getComputedStyle(cards[0]);
+    const cardWidth = cards[0].offsetWidth + parseInt(cardStyle.marginRight);
 
     // Función para mover el carrusel
     const moveCarousel = () => {
         currentIndex = (currentIndex + 1) % cards.length;
+        scrollToCard(currentIndex);
+    };
+
+    // Función para desplazarse a una card específica
+    const scrollToCard = (index) => {
         carousel.scrollTo({
-            left: currentIndex * cardWidth,
+            left: index * cardWidth,
             behavior: 'smooth'
         });
+        currentIndex = index;
     };
 
     // Iniciar auto-scroll
     const startInterval = () => {
+        clearInterval(intervalId);
         intervalId = setInterval(moveCarousel, delay);
     };
 
-    // Detectar cuando el usuario interactúa manualmente
-    let isDragging = false;
-    let startPos = 0;
-    let currentTranslate = 0;
-
+    // Manejar eventos de ratón
     carousel.addEventListener('mousedown', (e) => {
         isDragging = true;
         startPos = e.clientX;
-        currentTranslate = carousel.scrollLeft;
+        currentScroll = carousel.scrollLeft;
         clearInterval(intervalId);
+        carousel.style.cursor = 'grabbing';
+        carousel.style.scrollBehavior = 'auto';
     });
 
     carousel.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
         const x = e.clientX;
-        const walk = (x - startPos) * 2; // Ajustar sensibilidad
-        carousel.scrollLeft = currentTranslate - walk;
+        const walk = (x - startPos) * 2;
+        carousel.scrollLeft = currentScroll - walk;
     });
 
     carousel.addEventListener('mouseup', () => {
+        if (!isDragging) return;
         isDragging = false;
+        carousel.style.cursor = 'grab';
+        carousel.style.scrollBehavior = 'smooth';
+        
+        // Ajustar a la card más cercana
+        const scrollPos = carousel.scrollLeft;
+        const newIndex = Math.round(scrollPos / cardWidth);
+        scrollToCard(newIndex);
+        
         setTimeout(startInterval, delay * 2);
     });
 
     carousel.addEventListener('mouseleave', () => {
-        isDragging = false;
+        if (isDragging) {
+            isDragging = false;
+            carousel.style.cursor = 'grab';
+            carousel.style.scrollBehavior = 'smooth';
+            
+            const scrollPos = carousel.scrollLeft;
+            const newIndex = Math.round(scrollPos / cardWidth);
+            scrollToCard(newIndex);
+            
+            setTimeout(startInterval, delay * 2);
+        }
     });
 
     // Manejar eventos táctiles
     carousel.addEventListener('touchstart', (e) => {
         startPos = e.touches[0].clientX;
-        currentTranslate = carousel.scrollLeft;
+        currentScroll = carousel.scrollLeft;
         clearInterval(intervalId);
+        carousel.style.scrollBehavior = 'auto';
     }, { passive: true });
 
     carousel.addEventListener('touchmove', (e) => {
         const x = e.touches[0].clientX;
         const walk = (x - startPos) * 2;
-        carousel.scrollLeft = currentTranslate - walk;
+        carousel.scrollLeft = currentScroll - walk;
     }, { passive: true });
 
     carousel.addEventListener('touchend', () => {
+        carousel.style.scrollBehavior = 'smooth';
+        const scrollPos = carousel.scrollLeft;
+        const newIndex = Math.round(scrollPos / cardWidth);
+        scrollToCard(newIndex);
         setTimeout(startInterval, delay * 2);
     }, { passive: true });
 
     // Iniciar el carrusel
     startInterval();
+
+    // Ajustar al redimensionar la ventana
+    window.addEventListener('resize', () => {
+        scrollToCard(currentIndex);
+    });
 }
+
 
 // Configuración de galería automática mejorada
 function setupAutoGallery(containerSelector = '.gallery-slider', delay = 8000) {
