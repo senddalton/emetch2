@@ -180,7 +180,7 @@ header h1 {
 
 .gallery-section h2 {
     font-size: clamp(1.3rem, 2.5vw, 2rem);
-    color: #ffffff;
+    color: #1a1a1a;
     margin-bottom: 3vh;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -227,7 +227,7 @@ header h1 {
 .opiniones-producto h2 {
     font-size: 2rem;
     margin-bottom: 2rem;
-    color: #333;
+    color: #fff;
 }
 
 .contenedor-opiniones {
