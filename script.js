@@ -1,5 +1,10 @@
-// Carrusel sin botones
-function setupCarousel(carouselId, autoScrollDelay = 8000) {
+// Función de contacto WhatsApp
+function contacto() {
+    window.open('https://wa.me/+5216183274838?text=Hola,%20me%20gustaría%20contactarlos', '_blank');
+}
+
+// Configuración de carrusel automático
+function setupAutoCarousel(carouselId, delay = 8000) {
     const carousel = document.getElementById(carouselId);
     if (!carousel) return;
 
@@ -7,34 +12,51 @@ function setupCarousel(carouselId, autoScrollDelay = 8000) {
     if (cards.length === 0) return;
 
     let currentIndex = 0;
-    let scrollInterval;
-    const cardStyle = window.getComputedStyle(cards[0]);
-    const cardWidth = cards[0].offsetWidth + parseInt(cardStyle.marginRight);
+    const cardWidth = cards[0].offsetWidth + parseInt(window.getComputedStyle(cards[0]).marginRight);
 
-    const moveCarousel = (index) => {
-        currentIndex = index;
+    const moveCarousel = () => {
+        currentIndex = (currentIndex + 1) % cards.length;
         carousel.scrollTo({
-            left: index * cardWidth,
+            left: currentIndex * cardWidth,
             behavior: 'smooth'
         });
     };
 
-    const nextSlide = () => {
-        currentIndex = (currentIndex + 1) % cards.length;
-        moveCarousel(currentIndex);
+    // Iniciar auto-scroll
+    const intervalId = setInterval(moveCarousel, delay);
+
+    // Manejar eventos táctiles
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    carousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        clearInterval(intervalId);
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+        setTimeout(() => setupAutoCarousel(carouselId, delay), delay * 2);
+    }, { passive: true });
+
+    const handleSwipe = () => {
+        if (touchEndX < touchStartX - 50) {
+            // Swipe izquierda (next)
+            currentIndex = Math.min(currentIndex + 1, cards.length - 1);
+        } else if (touchEndX > touchStartX + 50) {
+            // Swipe derecha (prev)
+            currentIndex = Math.max(currentIndex - 1, 0);
+        }
+        carousel.scrollTo({
+            left: currentIndex * cardWidth,
+            behavior: 'smooth'
+        });
     };
-
-    carousel.addEventListener('mouseenter', () => clearInterval(scrollInterval));
-    carousel.addEventListener('mouseleave', () => scrollInterval = setInterval(nextSlide, autoScrollDelay));
-    carousel.addEventListener('touchstart', () => clearInterval(scrollInterval), { passive: true });
-    carousel.addEventListener('touchend', () => scrollInterval = setInterval(nextSlide, autoScrollDelay), { passive: true });
-
-    scrollInterval = setInterval(nextSlide, autoScrollDelay);
-    window.addEventListener('resize', () => moveCarousel(currentIndex));
 }
 
-// Galería sin botones
-function setupGallerySlider(containerSelector = '.gallery-slider') {
+// Configuración de galería automática
+function setupAutoGallery(containerSelector = '.gallery-slider', delay = 8000) {
     const slider = document.querySelector(containerSelector);
     if (!slider) return;
 
@@ -42,7 +64,6 @@ function setupGallerySlider(containerSelector = '.gallery-slider') {
     if (slides.length === 0) return;
 
     let currentSlide = 0;
-    let slideInterval;
 
     const showSlide = (index) => {
         slides.forEach(slide => slide.classList.remove('active'));
@@ -55,46 +76,52 @@ function setupGallerySlider(containerSelector = '.gallery-slider') {
         showSlide(currentSlide);
     };
 
-    slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
-    slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 8000));
-    slider.addEventListener('touchstart', () => clearInterval(slideInterval), { passive: true });
-    slider.addEventListener('touchend', () => slideInterval = setInterval(nextSlide, 8000), { passive: true });
+    // Iniciar auto-slide
+    const intervalId = setInterval(nextSlide, delay);
 
+    // Manejar eventos táctiles
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    slider.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        clearInterval(intervalId);
+    }, { passive: true });
+
+    slider.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+        setTimeout(() => setupAutoGallery(containerSelector, delay), delay * 2);
+    }, { passive: true });
+
+    const handleSwipe = () => {
+        if (touchEndX < touchStartX - 50) {
+            // Swipe izquierda (next)
+            currentSlide = (currentSlide + 1) % slides.length;
+        } else if (touchEndX > touchStartX + 50) {
+            // Swipe derecha (prev)
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        }
+        showSlide(currentSlide);
+    };
+
+    // Mostrar primer slide
     showSlide(currentSlide);
-    slideInterval = setInterval(nextSlide, 8000);
 }
 
-// Animaciones con AOS
-function setupScrollAnimations() {
-    const sections = document.querySelectorAll('section:not(.opiniones-producto), .prices, .gallery-section, .buttons');
-    const divs = document.querySelectorAll('div');
-
-    sections.forEach((section, i) => {
-        const effect = i % 2 === 0 ? 'flip-left' : 'flip-right';
-        section.setAttribute('data-aos', effect);
-    });
-
-    divs.forEach((div, i) => {
-        const effects = ['fade-up', 'zoom-in', 'fade-down', 'zoom-out'];
-        div.setAttribute('data-aos', effects[i % effects.length]);
-    });
-
-    AOS.init({
-        duration: 1000,
-        once: true,
-    });
-}
-
-// FAQ
+// Configuración de FAQ
 function setupFAQ() {
     const faqItems = document.querySelectorAll('.faq-item');
     if (faqItems.length === 0) return;
 
     faqItems.forEach(item => {
         const pregunta = item.querySelector('.faq-pregunta');
-        const toggle = pregunta?.querySelector('.faq-toggle');
+        if (!pregunta) return;
 
-        pregunta?.addEventListener('click', () => {
+        const toggle = pregunta.querySelector('.faq-toggle');
+
+        pregunta.addEventListener('click', () => {
+            // Cierra otras preguntas abiertas
             faqItems.forEach(otherItem => {
                 if (otherItem !== item && otherItem.classList.contains('active')) {
                     otherItem.classList.remove('active');
@@ -103,27 +130,16 @@ function setupFAQ() {
                 }
             });
 
+            // Abre/cierra la pregunta clickeada
             item.classList.toggle('active');
             if (toggle) toggle.textContent = item.classList.contains('active') ? '−' : '+';
         });
     });
 }
 
-// Iniciar todo al cargar el DOM
-document.addEventListener('DOMContentLoaded', function () {
-    setupCarousel('carousel');
-    setupGallerySlider();
-    setupScrollAnimations();
+// Inicialización cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', function() {
+    setupAutoCarousel('carousel');
+    setupAutoGallery();
     setupFAQ();
-
-    // Mover botón de contacto a sección de precios
-    const contactBtn = document.createElement('button');
-    contactBtn.textContent = 'Contáctanos por WhatsApp';
-    contactBtn.className = 'whatsapp-button';
-    contactBtn.addEventListener('click', () => {
-        window.open('https://wa.me/+5216183274838?text=Hola,%20me%20gustaría%20contactarlos', '_blank');
-    });
-
-    const pricesSection = document.querySelector('.prices');
-    if (pricesSection) pricesSection.appendChild(contactBtn);
 });
