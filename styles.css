@@ -124,7 +124,7 @@ header h1 {
 .prices h2 {
     margin-bottom: 3vh;
     font-size: clamp(1.3rem, 2.5vw, 2rem);
-    color: #d4af37;
+    color: #7900ac;
     text-transform: uppercase;
 }
 
