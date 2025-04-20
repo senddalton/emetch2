@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Mover botón de contacto a sección de precios
     const contactBtn = document.createElement('button');
     contactBtn.textContent = 'Contáctanos por WhatsApp';
-    contactBtn.className = 'whatsapp-button';
+    contactBtn.className = 'contacto';
     contactBtn.addEventListener('click', () => {
         window.open('https://wa.me/+5216183274838?text=Hola,%20me%20gustaría%20contactarlos', '_blank');
     });
