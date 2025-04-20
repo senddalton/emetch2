@@ -174,7 +174,7 @@ header h1 {
 /* Galería slider */
 .gallery-section {
     padding: 5vh 5vw;
-    background-color: #1a1a1a;
+    background-color: #ffffff;
     text-align: center;
 }
 
@@ -220,7 +220,7 @@ header h1 {
 /* Opiniones */
 .opiniones-producto {
     padding: 3rem 1rem;
-    background-color: #f9f9f9;
+    background-color: #1a1a1a;
     text-align: center;
 }
 
