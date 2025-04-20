@@ -30,7 +30,6 @@ function setupCarousel(carouselId, autoScrollDelay = 8000) {
     carousel.addEventListener('touchend', () => scrollInterval = setInterval(nextSlide, autoScrollDelay), { passive: true });
 
     scrollInterval = setInterval(nextSlide, autoScrollDelay);
-
     window.addEventListener('resize', () => moveCarousel(currentIndex));
 }
 
@@ -58,6 +57,8 @@ function setupGallerySlider(containerSelector = '.gallery-slider') {
 
     slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
     slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 8000));
+    slider.addEventListener('touchstart', () => clearInterval(slideInterval), { passive: true });
+    slider.addEventListener('touchend', () => slideInterval = setInterval(nextSlide, 8000), { passive: true });
 
     showSlide(currentSlide);
     slideInterval = setInterval(nextSlide, 8000);
@@ -118,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Mover botón de contacto a sección de precios
     const contactBtn = document.createElement('button');
     contactBtn.textContent = 'Contáctanos por WhatsApp';
-    contactBtn.className = 'whatsapp-button;
+    contactBtn.className = 'whatsapp-button';
     contactBtn.addEventListener('click', () => {
         window.open('https://wa.me/+5216183274838?text=Hola,%20me%20gustaría%20contactarlos', '_blank');
     });
