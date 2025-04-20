@@ -350,43 +350,43 @@ header h1 {
 
 /* -------------------- FOOTER -------------------- */
 footer {
-  background-color: #1a1a1a;
-  color: #fff;
-  text-align: center;
-  padding: 5vh 5vw;
-  border-top: 3px solid #d4af37;
+    background-color: #1a1a1a;
+    color: #fff;
+    text-align: center;
+    padding: 5vh 5vw;
+    border-top: 3px solid #d4af37;
 }
 
 footer h2 {
-  font-size: clamp(1.1rem, 2vw, 1.5rem);
-  margin-bottom: 2vh;
-  color: #7900ac;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    margin-bottom: 2vh;
+    color: #d4af37;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .social-links {
-  display: flex;
-  justify-content: center;
-  gap: 3vw;
-  margin-bottom: 3vh;
+    display: flex;
+    justify-content: center;
+    gap: 3vw;
+    margin-bottom: 3vh;
 }
 
 .social-links a {
-  color: #7900ac;
-  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-  text-decoration: none;
-  transition: color 0.3s;
-  font-weight: 600;
+    color: #7900ac;
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 600;
 }
 
 .social-links a:hover {
-  color: #fff;
-  text-decoration: underline;
+    color: #fff;
+    text-decoration: underline;
 }
 
 footer p {
-  font-size: clamp(0.8rem, 1.2vw, 1rem);
-  margin-top: 2vh;
-  color: #aaa;
+    font-size: clamp(0.8rem, 1.2vw, 1rem);
+    margin-top: 2vh;
+    color: #aaa;
 }
