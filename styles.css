@@ -371,7 +371,7 @@ footer {
 footer h2 {
     font-size: clamp(1.1rem, 2vw, 1.5rem);
     margin-bottom: 2vh;
-    color: #d4af37;
+    color: #7900ac;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
