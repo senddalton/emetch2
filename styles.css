@@ -98,7 +98,7 @@ header h1 {
 
 .card:focus-within {
     transform: scale(1.03);
-    outline: 2px solid #d4af37;
+    outline: 2px solid #7900ac;
 }
 
 .card img {
