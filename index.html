@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Servicios en línea para tu negocio." />
+  <title>Emetch</title>
+  <link rel="icon" href="imagotipo.png" type="image/png" />
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <img src="imagotipo.png" alt="Emetch" width="150" height="150" />
+    <h1>Emetch</h1>
+  </header>
+
+  <main>
+    <!-- Sección de Servicios -->
+    <section class="cards-container" aria-labelledby="servicios-titulo" data-aos="flip-left" data-aos-duration="800">
+      <h2 id="servicios-titulo">Nuestros Servicios</h2>
+      <div class="cards" id="carousel">
+        <div class="card" tabindex="0" data-aos="fade-up" data-aos-delay="100">
+          <img src="servicio1.jpg" alt="Landing page" loading="lazy" />
+          <h3>Paquete Básico</h3>
+          <p>Landing page con dominio personalizado para tu negocio.</p>
+        </div>
+        <div class="card" tabindex="0" data-aos="fade-up" data-aos-delay="200">
+          <img src="servicio2.jpg" alt="Landing page y agenda virtual" loading="lazy" />
+          <h3>Paquete Plus</h3>
+          <p>Landing page y agenda virtual, facilita a tus clientes la forma de agendar citas.</p>
+        </div>
+        <div class="card" tabindex="0" data-aos="fade-up" data-aos-delay="300">
+          <img src="servicio3.jpg" alt="Landing page, agenda virtual y publicidad en RRSS" loading="lazy" />
+          <h3>Paquete Premium</h3>
+          <p>Landing Page con dominio personalizado, Agenda virtual y publicidad en RRSS. Llega a más gente publicándote en RRSS.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Precios -->
+    <section class="prices" aria-labelledby="precios-titulo" data-aos="flip-right" data-aos-duration="800">
+      <h2 id="precios-titulo">Lista de Precios</h2>
+      <ul>
+        <li>Paquete Básico - $800</li>
+        <li>Paquete Plus - $1000</li>
+        <li>Paquete Premium - $1200</li>
+      </ul>
+      <div class="buttons">
+        <button onclick="contacto()" aria-label="Contrata ahora">Contáctanos</button>
+      </div>
+    </section>
+
+    <!-- Sección de Galería -->
+    <section class="gallery-section" aria-labelledby="galeria-titulo" data-aos="flip-up" data-aos-duration="800">
+      <h2 id="galeria-titulo">Nuestro Trabajo</h2>
+      <div class="gallery-slider">
+        <div class="gallery-slide" data-aos="zoom-in" data-aos-delay="100">
+          <img src="foto1.jpg" alt="Vista de horas disponibles" loading="lazy" />
+        </div>
+        <div class="gallery-slide" data-aos="zoom-in" data-aos-delay="200">
+          <img src="foto2.jpg" alt="Vista de citas" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Opiniones -->
+    <section class="opiniones-producto" data-aos="flip-down" data-aos-duration="800">
+      <h2>Lo que dicen nuestros clientes</h2>
+      <div class="contenedor-opiniones">
+        <div class="opinion" data-aos="fade-up" data-aos-delay="100">
+          <div class="estrellas">★★★★★</div>
+          <p class="texto-opinion">"Este producto superó mis expectativas. La calidad es increíble."</p>
+          <p class="autor-opinion">— María López</p>
+        </div>
+        <div class="opinion" data-aos="fade-up" data-aos-delay="200">
+          <div class="estrellas">★★★★☆</div>
+          <p class="texto-opinion">"Muy buen producto, aunque tardó un poco en llegar."</p>
+          <p class="autor-opinion">— Juan Pérez</p>
+        </div>
+        <div class="opinion" data-aos="fade-up" data-aos-delay="300">
+          <div class="estrellas">★★★★★</div>
+          <p class="texto-opinion">"Excelente servicio al cliente y el producto es justo lo que necesitaba."</p>
+          <p class="autor-opinion">— Ana Gómez</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Preguntas Frecuentes -->
+    <section class="seccion-faq" data-aos="zoom-in-up" data-aos-duration="800">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="contenedor-faq">
+        <div class="faq-item" data-aos="flip-up" data-aos-delay="100">
+          <div class="faq-pregunta">
+            <h3>¿Cuánto tarda el envío?</h3>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-respuesta">
+            <p>El tiempo de envío depende de tu ubicación. En promedio, tarda entre 3 a 5 días hábiles.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-aos="flip-up" data-aos-delay="200">
+          <div class="faq-pregunta">
+            <h3>¿Aceptan devoluciones?</h3>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-respuesta">
+            <p>Sí, aceptamos devoluciones dentro de los 30 días posteriores a la compra.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-aos="flip-up" data-aos-delay="300">
+          <div class="faq-pregunta">
+            <h3>¿Cómo puedo pagar?</h3>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-respuesta">
+            <p>Aceptamos tarjetas de crédito/débito, PayPal y transferencias bancarias.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <h2>Síguenos en nuestras redes sociales</h2>
+    <div class="social-links">
+      <a href="https://www.facebook.com/senddalton" aria-label="Facebook de Emetch">Facebook</a>
+      <a href="https://www.instagram.com/senddalton" aria-label="Instagram de Emetch">Instagram</a>
+      <a href="https://www.tiktok.com/@senddalton" aria-label="TikTok de Emetch">TikTok</a>
+    </div>
+    <p>&copy; 2025 Emetch. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true, // Animación solo una vez
+      offset: 120, // Disparar animación 120px antes del elemento
+    });
+  </script>
+</body>
+</html>
