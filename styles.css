@@ -29,6 +29,7 @@ header img {
     height: auto;
     margin-bottom: 1vh;
     transition: transform 0.3s ease;
+    animation: logoBounce 4s ease-in-out infinite;
 }
 
 header img:hover {
@@ -41,6 +42,15 @@ header h1 {
     color: #7900ac;
     font-weight: 700;
     letter-spacing: 1px;
+}
+
+/* Keyframes con prefijos para mayor compatibilidad */
+@-webkit-keyframes logoBounce {
+    0%, 100% { -webkit-transform: translateY(0) rotate(0deg); transform: translateY(0) rotate(0deg); }
+    15% { -webkit-transform: translateY(-16px) rotate(4deg); transform: translateY(-16px) rotate(4deg); }
+    30% { -webkit-transform: translateY(0) rotate(0deg); transform: translateY(0) rotate(0deg); }
+    45% { -webkit-transform: translateY(-8px) rotate(-2deg); transform: translateY(-8px) rotate(-2deg); }
+    60% { -webkit-transform: translateY(0) rotate(0deg); transform: translateY(0) rotate(0deg); }
 }
 
 /* Sección de servicios */
