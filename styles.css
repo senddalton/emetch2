@@ -1,0 +1,309 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+h1, h2, h3 {
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+  padding: 20px;
+  color: white;
+}
+
+header img {
+  margin-right: 20px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+/* Sección de servicios */
+.cards-container {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.cards-container h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  overflow: hidden;
+}
+
+.card {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* Precios */
+.prices {
+  background-color: #f0f0f0;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.prices h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.prices ul {
+  list-style: none;
+  padding: 0;
+}
+
+.prices li {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+/* Botón de contacto */
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.buttons button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buttons button:hover {
+  background-color: #218838;
+}
+
+/* Galería */
+.gallery-section {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.gallery-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.gallery-slider {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.gallery-slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.gallery-slide:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-dots {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.gallery-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+.gallery-dot.active {
+  background-color: #28a745;
+}
+
+/* Sección de opiniones */
+.opiniones-producto {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.opiniones-producto h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.contenedor-opiniones {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.opinion {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.opinion .estrellas {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.opinion .texto-opinion {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.opinion .autor-opinion {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* FAQ */
+.seccion-faq {
+  padding: 40px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.seccion-faq h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.contenedor-faq {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.faq-item {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.faq-pregunta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.faq-toggle {
+  font-size: 1.5rem;
+}
+
+.faq-respuesta {
+  display: none;
+  margin-top: 10px;
+}
+
+.faq-item.active .faq-respuesta {
+  display: block;
+}
+
+.faq-item.active .faq-toggle {
+  transform: rotate(45deg);
+}
+
+/* Footer */
+footer {
+  padding: 40px 20px;
+  background-color: #333;
+  color: white;
+  text-align: center;
+}
+
+footer h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+footer .social-links {
+  margin-bottom: 20px;
+}
+
+footer .social-links a {
+  margin: 0 10px;
+  color: white;
+  font-size: 1.2rem;
+}
+
+footer .social-links a:hover {
+  text-decoration: underline;
+}
+
+footer p {
+  font-size: 1rem;
+  color: #bbb;
+}
