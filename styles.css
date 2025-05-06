@@ -161,8 +161,8 @@ header h1 {
 }
 
 .buttons button {
-    background-color: #1a1a1a;
-    color: #7900ac;
+    background-color: #7900ac;
+    color: #1a1a1a;
     border: 2px solid #7900ac;
     padding: 2vh 10vw;
     border-radius: 40px;
@@ -175,8 +175,8 @@ header h1 {
 
 .buttons button:hover, 
 .buttons button:focus {
-    background-color: #7900ac;
-    color: #1a1a1a;
+    background-color: #1a1a1a;
+    color: #7900ac;
     outline: none;
 }
 
